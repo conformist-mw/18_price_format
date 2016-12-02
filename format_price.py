@@ -1,3 +1,4 @@
+import argparse
 import re
 match = re.compile(r'\d+\.?\d*$')
 
@@ -15,4 +16,8 @@ def format_price(price):
 
 
 if __name__ == '__main__':
-    print(format_price('123wfsd'))
+    parser = argparse.ArgumentParser(
+        description='returns price in human-readable format')
+    parser.add_argument('price', help='input price')
+    args = parser.parse_args()
+    print(format_price(args.price))
